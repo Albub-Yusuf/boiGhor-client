@@ -1,11 +1,57 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { CartContext } from '../../App';
+import { AuthContext, CartContext } from '../../App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Table, Container } from 'react-bootstrap';
 
 const Checkout = () => {
     const [cartInfos, setCartInfos] = useContext(CartContext);
     const {id, name, writer, price, imageURL} = cartInfos;
+
+    const [loggedInUser, setLoggedInUser] = useContext(AuthContext);
+    const userName = loggedInUser.name;
+    // const uerEmail = loggedInUser.email;
+    // console.log(userName, uerEmail);
+
+    const proceedCheckout = () => {
+        const newOrder = {
+            user: userName,
+            email: loggedInUser.email,
+            book:name,
+            writer: writer,
+            price: price,
+            image: imageURL,
+            quantity: 1,
+            orderTime: new Date()
+
+        }
+
+        const url = `http://localhost:5000/addOrder`;
+
+        console.log(newOrder);
+////////////////
+
+
+fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type' : 'application/json'
+    },
+    body: JSON.stringify(newOrder)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if(data){
+      // processOrder();
+      alert('your order placed successfully')
+    }
+  })
+
+
+        
+
+   ////////////
+
+    }
 
 
 
@@ -44,7 +90,7 @@ const Checkout = () => {
 
         </div>
         <div  style={{width:'90%', display:'flex',justifyContent:'right'}}>
-            <Button>Checkout</Button>
+            <Button onClick={proceedCheckout}>Checkout</Button>
         </div>
         </Container>
     );

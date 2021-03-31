@@ -63,6 +63,7 @@ const AddBook = () => {
         })
         .catch(function (error) {
           console.log(error);
+          alert(error, 'Please try again with different image')
         });
 
     }
