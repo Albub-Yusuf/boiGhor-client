@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import React from "react";
+import React, { createContext, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,49 +11,72 @@ import AddBook from './components/AddBook/AddBook';
 import Orders from './components/Orders/Orders';
 import Admin from './components/Admin/Admin';
 import Home from './components/Home/Home';
+import Navbar from './components/Navbar/Navbar';
+import Login from './components/Login/Login';
+import Checkout from './components/Checkout/Checkout';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+
+ export const AuthContext = createContext();
+ export const CartContext = createContext();
+
 
 function App() {
+
+  const [loggedInUser, setLoggedInUser] = useState({
+
+    name: '',
+    email: '',
+    isLoggedIn: '',
+    isRegistered: '',
+    hasError: '',
+
+  });
+
+  const [cartInfos, setCartInfos] = useState({
+
+    id: ''
+  })
+
   return (
     <div>
-      <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/home">Home</Link>
-            </li>
-            <li>
-              <Link to="/add">Add Book</Link>
-            </li>
-            <li>
-              <Link to="/orders">Orders</Link>
-            </li>
-            <li>
-              <Link to="/admin">Admin</Link>
-            </li>
-          </ul>
-        </nav>
+      <AuthContext.Provider value={[loggedInUser, setLoggedInUser]}>
+         <CartContext.Provider value={[cartInfos, setCartInfos]}>
+            <Router>
+                <Navbar></Navbar>     
+                  <Switch>
+                    <Route path="/login">
+                    <Login></Login>
+                    </Route>
+                    <Route path="/home">
+                        <Home></Home>
+                    </Route>
+                    <Route path="/add">
+                      <AddBook></AddBook>
+                    </Route>
+                    
+                    <PrivateRoute path="/orders">
+                    <Orders></Orders>
+                    </PrivateRoute>
+                  
 
-      
-        <Switch>
-          <Route path="/home">
-              <Home></Home>
-          </Route>
-          <Route path="/add">
-            <AddBook></AddBook>
-          </Route>
-          <Route path="/orders">
-            <Orders></Orders>
-          </Route>
-          <Route path="/admin">
-             <Admin></Admin>
-          </Route>
-          <Route exact path="/">
-            <Home></Home>
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+                    <PrivateRoute path="/checkout">
+                    <Checkout></Checkout>
+                    </PrivateRoute>
+
+                    <PrivateRoute path="/admin">
+                    <Admin></Admin>
+                    </PrivateRoute>
+                    
+                    <Route exact path="/">
+                      <Home></Home>
+                    </Route>
+              
+                  </Switch>
+          
+            </Router>
+         </CartContext.Provider>
+    </AuthContext.Provider>
+
     </div>
   );
 }

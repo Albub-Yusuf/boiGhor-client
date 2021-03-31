@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
+import { CartContext } from '../../App';
+import { Link } from 'react-router-dom';
 
 const Book = (props) => 
 {
 
+
+    const [cartInfos, setCartInfos] = useContext(CartContext);
     const {_id, name, writer, price, imageURL} = props.book;
 
 
@@ -14,7 +18,7 @@ const Book = (props) =>
 
         const  url = `http://localhost:5000/delete/${id}`;
         console.log(url);
-
+        
 
          // DELETE request using fetch with error handling
          fetch(url, { method: 'DELETE' })
@@ -44,12 +48,29 @@ const Book = (props) =>
 
     }
 
-    const loadBook = (id) => {
-        console.log(id);
+     const  loadBook =  (id) =>  {
+        // console.log(id);
+        
+        setCartInfos(id);
+      
+
+        console.log(cartInfos);
+       
         fetch(`http://localhost:5000/book/${id}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            
+            const singleBook = {
+                id: data._id,
+                name: data.name,
+                writer: data.writer,
+                price: data.price,
+                imageURL: data.imageURL
+            }
+
+            console.log(singleBook);
+
+            setCartInfos(singleBook);
         })
     }
 
@@ -71,7 +92,7 @@ const Book = (props) =>
                         
                      <h5><strong>{price}</strong>/-</h5>
                    
-                    <Button  onClick={() => loadBook(_id)}>Add to Cart</Button>
+                    <Link to="/checkout"><Button  onClick={() => loadBook(_id)}>Add to Cart</Button></Link>
                     </div>
                     {/* <button onClick={() => deleteBook(_id)} >Delete</button>
                     <button onClick={() => loadBook(_id)} >Edit</button> */}
