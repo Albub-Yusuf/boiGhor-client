@@ -12,41 +12,7 @@ const Book = (props) =>
     const {_id, name, writer, price, imageURL} = props.book;
 
 
-    const deleteBook = (id, event) => {
-
-        console.log(id);
-
-        const  url = `http://localhost:5000/delete/${id}`;
-        console.log(url);
-        
-
-         // DELETE request using fetch with error handling
-         fetch(url, { method: 'DELETE' })
-         .then(async response => {
-             const data = await response.json();
- 
-             // check for error response
-             if (!response.ok) {
-                 // get error message from body or default to response status
-                 const error = (data && data.message) || response.status;
-                 return Promise.reject(error);
-             }
- 
-             console.log('Delete successful');
-             if (response.ok) {
-                 console.log(event);
-                
-                // event.target.parentNode.style.display = 'none';
-                //  document.getElementById("card").target.parentNode.style.display = 'none';
-             }
-         })
-         .catch(error => {
-             //setErrorMessage(error);
-             console.error('There was an error!', error);
-         });
-    
-
-    }
+   
 
      const  loadBook =  (id) =>  {
         // console.log(id);

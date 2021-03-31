@@ -9,8 +9,7 @@ const Checkout = () => {
 
     const [loggedInUser, setLoggedInUser] = useContext(AuthContext);
     const userName = loggedInUser.name;
-    // const uerEmail = loggedInUser.email;
-    // console.log(userName, uerEmail);
+   
 
     const proceedCheckout = () => {
         const newOrder = {
