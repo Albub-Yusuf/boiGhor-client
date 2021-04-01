@@ -4,6 +4,10 @@ import { AuthContext } from '../../App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Table, Container } from 'react-bootstrap';
 
+import Navbar from '../Navbar/Navbar';
+
+
+
 const Orders = () => {
     const [loggedInUser, setLoggedInUser] = useContext(AuthContext);
     const [orders, setOrders] = useState([]);
@@ -20,7 +24,11 @@ const Orders = () => {
     }, [])
 
     return (
-        <Container>
+        
+ 
+        <div>
+            <Navbar></Navbar>
+            <Container>
             <br></br>
             <h2>Orders</h2>
             <br></br>
@@ -59,6 +67,8 @@ const Orders = () => {
             </div>
 
         </Container>
+        </div>
+
     );
 };
 

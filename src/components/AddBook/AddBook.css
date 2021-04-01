@@ -1,0 +1,16 @@
+.inputStyle{
+
+    width: 100%;
+    min-height: 40px;
+    outline: lightgrey;
+    border-radius: 4px;
+    font-weight: 600;
+    
+
+  }
+
+  .input-wrapper{
+      width: 50%;
+      margin: 20px;
+      padding: 20px;
+  }

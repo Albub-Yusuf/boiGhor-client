@@ -13,6 +13,8 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
 
+import Navbar from '../Navbar/Navbar';
+
 
 const Login = () => {
 
@@ -30,19 +32,19 @@ const Login = () => {
 
 
     const handleLogin = () => {
-        console.log('clicked');
 
-
+    
         const provider = new firebase.auth.GoogleAuthProvider();
 
         firebase.auth()
             .signInWithPopup(provider)
             .then((result) => {
 
-                const { displayName, email } = result.user;
-                const signedInUser = { name: displayName, email, isLoggedIn: true };
+                const { displayName, email, photoURL } = result.user;
+                const signedInUser = { name: displayName, email, isLoggedIn: true, image:photoURL };
                 setLoggedInUser(signedInUser);
                 history.replace(from);
+
 
             }).catch((error) => {
                 var errorCode = error.code;
@@ -59,14 +61,19 @@ const Login = () => {
 
     return (
         <div>
+
+            <Navbar></Navbar>
+            <div style={{display:'flex', alignItems:'center', justifyContent: 'center',minHeight:'400px'}}>
+              
             {/* google Sign in button */}
-            <div>
-                &mdash;&mdash;&mdash;&mdash; Or &mdash;&mdash;&mdash;&mdash;
-                <br /><br />
-                <Button onClick={handleLogin}><FontAwesomeIcon icon={faGoogle} />    &nbsp;&nbsp;Continue with google</Button>
+            <div className="loginBox" style={{boxShadow:'10px 10px 20px lightgrey', padding:'20px', width:'300px', textAlign:'center'}}>
+                <h3>Login</h3>
+               <br></br>
+                <Button onClick={handleLogin}><FontAwesomeIcon icon={faGoogle} />   &nbsp;&nbsp;Login with google</Button>
                 <br /><br />
             </div>
 
+        </div>
         </div>
     );
 };

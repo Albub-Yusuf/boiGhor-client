@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import { CartContext } from '../../App';
 import { Link } from 'react-router-dom';
+import './Book.css';
 
 const Book = (props) => 
 {
@@ -15,13 +16,9 @@ const Book = (props) =>
    
 
      const  loadBook =  (id) =>  {
-        // console.log(id);
         
         setCartInfos(id);
-      
-
-        console.log(cartInfos);
-       
+             
         fetch(`https://mighty-fjord-75782.herokuapp.com/book/${id}`)
         .then(res => res.json())
         .then(data => {
@@ -34,8 +31,6 @@ const Book = (props) =>
                 imageURL: data.imageURL
             }
 
-            console.log(singleBook);
-
             setCartInfos(singleBook);
         })
     }
@@ -43,9 +38,9 @@ const Book = (props) =>
 
     return (
         <div>
-            <div id="card" style={{width: '250px', height:'350px', border:'2px solid #333', margin: '10px', padding:'10px',textAlign:'center'}}>
-                <div style={{width:'250px', height:'200px', textAlign:'center'}}>
-                    <img src={imageURL} alt={name} style={{height:'100%'}}></img>
+            <div id="card" style={{width: '300px', height:'400px', boxShadow:'10px 10px 20px lightgrey', border:'.5px solid #fff9db', borderRadius:'5px', margin: '10px', padding:'10px',textAlign:'center'}}>
+                <div style={{width:'99%', height:'250px', textAlign:'center', margin:'0 auto', borderRadius:'5px'}}>
+                    <img src={imageURL} alt={name} style={{height:'92%', margin:'5px auto'}}></img>
                 </div>
                
                 <div>
@@ -58,10 +53,9 @@ const Book = (props) =>
                         
                      <h5><strong>{price}</strong>/-</h5>
                    
-                    <Link to="/checkout"><Button  onClick={() => loadBook(_id)}>Add to Cart</Button></Link>
+                    <Link to="/checkout"><Button  className="btn-add-to-cart" onClick={() => loadBook(_id)}>Add to Cart</Button></Link>
                     </div>
-                    {/* <button onClick={() => deleteBook(_id)} >Delete</button>
-                    <button onClick={() => loadBook(_id)} >Edit</button> */}
+                   
 
                     
                 </div>

@@ -65,6 +65,17 @@
 
 }
 
+
+  /* style={{boxShadow:'10px 10px 20px lightgrey', padding:'20px', width:'30%', textAlign:'center'}} */
+
+.loginBox{
+  
+  width: 400px;
+  text-align: center;
+  padding: 30%;
+  box-shadow: 10px 10px 20px lightgrey;
+}
+
 @media(max-width: 819px){
 
   .form-wrapper{
@@ -77,6 +88,20 @@
 
   .form-wrapper{
     width: 80%;
+  }
+
+  .loginBox{
+    width: 250px;
+  }
+  
+}
+
+@media(max-width: 500px){
+
+ 
+
+  .loginBox{
+    width: 200px;
   }
   
 }

@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { createContext, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+
 } from "react-router-dom";
 import AddBook from './components/AddBook/AddBook';
 import Orders from './components/Orders/Orders';
@@ -15,6 +14,8 @@ import Navbar from './components/Navbar/Navbar';
 import Login from './components/Login/Login';
 import Checkout from './components/Checkout/Checkout';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Admin2 from './components/Admin2/Admin2';
+import NotFound from './components/NotFound/NotFound';
 
  export const AuthContext = createContext();
  export const CartContext = createContext();
@@ -38,11 +39,10 @@ function App() {
   })
 
   return (
-    <div>
+    <div className="App">
       <AuthContext.Provider value={[loggedInUser, setLoggedInUser]}>
          <CartContext.Provider value={[cartInfos, setCartInfos]}>
             <Router>
-                <Navbar></Navbar>     
                   <Switch>
                     <Route path="/login">
                     <Login></Login>
@@ -50,9 +50,14 @@ function App() {
                     <Route path="/home">
                         <Home></Home>
                     </Route>
-                    <Route path="/add">
-                      <AddBook></AddBook>
+
+                    <Route path="/admin2">
+                     <Admin2></Admin2>
                     </Route>
+
+                    <PrivateRoute path="/add">
+                    <AddBook></AddBook>
+                    </PrivateRoute>
                     
                     <PrivateRoute path="/orders">
                     <Orders></Orders>
@@ -69,6 +74,10 @@ function App() {
                     
                     <Route exact path="/">
                       <Home></Home>
+                    </Route>
+
+                    <Route path="*">
+                        <NotFound></NotFound>
                     </Route>
               
                   </Switch>

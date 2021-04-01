@@ -3,6 +3,9 @@ import { AuthContext, CartContext } from '../../App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Table, Container } from 'react-bootstrap';
 
+import Navbar from '../Navbar/Navbar';
+
+
 const Checkout = () => {
     const [cartInfos, setCartInfos] = useContext(CartContext);
     const {id, name, writer, price, imageURL} = cartInfos;
@@ -26,7 +29,7 @@ const Checkout = () => {
 
         const url = `https://mighty-fjord-75782.herokuapp.com/addOrder`;
 
-        console.log(newOrder);
+      
 ////////////////
 
 
@@ -55,7 +58,10 @@ fetch(url, {
 
 
     return (
-        <Container>
+
+     <div>
+       <Navbar></Navbar>
+       <Container>
             <br></br>
              <h2>Checkout</h2>
              <br></br>
@@ -92,6 +98,9 @@ fetch(url, {
             <Button onClick={proceedCheckout}>Checkout</Button>
         </div>
         </Container>
+     </div> 
+
+     
     );
 };
 
