@@ -44,15 +44,16 @@ function App() {
          <CartContext.Provider value={[cartInfos, setCartInfos]}>
             <Router>
                   <Switch>
+
+                  <Route exact path="/">
+                      <Home></Home>
+                    </Route>
+
                     <Route path="/login">
                     <Login></Login>
                     </Route>
                     <Route path="/home">
                         <Home></Home>
-                    </Route>
-
-                    <Route path="/admin2">
-                     <Admin2></Admin2>
                     </Route>
 
                     <PrivateRoute path="/add">
@@ -72,10 +73,6 @@ function App() {
                     <Admin></Admin>
                     </PrivateRoute>
                     
-                    <Route exact path="/">
-                      <Home></Home>
-                    </Route>
-
                     <Route path="*">
                         <NotFound></NotFound>
                     </Route>
