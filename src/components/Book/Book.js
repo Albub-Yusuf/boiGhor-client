@@ -22,7 +22,7 @@ const Book = (props) =>
 
         console.log(cartInfos);
        
-        fetch(`http://localhost:5000/book/${id}`)
+        fetch(`https://mighty-fjord-75782.herokuapp.com/book/${id}`)
         .then(res => res.json())
         .then(data => {
             

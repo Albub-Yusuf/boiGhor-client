@@ -7,7 +7,7 @@ const Home = () => {
 
     useEffect(()=>{
 
-        fetch('http://localhost:5000/books')
+        fetch('https://mighty-fjord-75782.herokuapp.com/books')
         .then(res => res.json())
         .then(data => setBooks(data));
 

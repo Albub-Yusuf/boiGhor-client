@@ -27,7 +27,7 @@ const AddBook = () => {
 
         console.log(bookInfo);
 
-        fetch('http://localhost:5000/addBook', {
+        fetch('https://mighty-fjord-75782.herokuapp.com/addBook', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

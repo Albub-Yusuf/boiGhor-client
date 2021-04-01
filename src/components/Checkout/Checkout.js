@@ -24,7 +24,7 @@ const Checkout = () => {
 
         }
 
-        const url = `http://localhost:5000/addOrder`;
+        const url = `https://mighty-fjord-75782.herokuapp.com/addOrder`;
 
         console.log(newOrder);
 ////////////////

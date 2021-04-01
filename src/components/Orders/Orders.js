@@ -8,7 +8,7 @@ const Orders = () => {
     const [loggedInUser, setLoggedInUser] = useContext(AuthContext);
     const [orders, setOrders] = useState([]);
 
-    const url = `http://localhost:5000/orders/${loggedInUser.email}`;
+    const url = `https://mighty-fjord-75782.herokuapp.com/orders/${loggedInUser.email}`;
     console.log(url);
 
     useEffect(() => {

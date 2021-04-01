@@ -12,7 +12,7 @@ const Admin = () => {
     const [loggedInUser, setLoggedInUser] = useContext(AuthContext);
 const [books, setBooks] = useState([]);
 
-const url = `http://localhost:5000/books`;
+const url = `https://mighty-fjord-75782.herokuapp.com/books`;
 
 useEffect(() => {
 
@@ -26,7 +26,7 @@ fetch(url)
 
         console.log(id);
 
-        const  url = `http://localhost:5000/delete/${id}`;
+        const  url = `https://mighty-fjord-75782.herokuapp.com/delete/${id}`;
         console.log(url);
         
 
