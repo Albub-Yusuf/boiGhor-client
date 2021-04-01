@@ -14,7 +14,6 @@ import Navbar from './components/Navbar/Navbar';
 import Login from './components/Login/Login';
 import Checkout from './components/Checkout/Checkout';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import Admin2 from './components/Admin2/Admin2';
 import NotFound from './components/NotFound/NotFound';
 
  export const AuthContext = createContext();
@@ -39,7 +38,7 @@ function App() {
   })
 
   return (
-    <div className="App">
+    <div>
       <AuthContext.Provider value={[loggedInUser, setLoggedInUser]}>
          <CartContext.Provider value={[cartInfos, setCartInfos]}>
             <Router>
