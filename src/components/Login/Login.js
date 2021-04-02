@@ -63,10 +63,10 @@ const Login = () => {
         <div>
 
             <Navbar></Navbar>
-            <div style={{display:'flex', alignItems:'center', justifyContent: 'center',minHeight:'400px'}}>
+            <div id="login-container">
               
             {/* google Sign in button */}
-            <div className="loginBox" style={{boxShadow:'10px 10px 20px lightgrey', padding:'20px', width:'300px', textAlign:'center'}}>
+            <div style={{boxShadow:'10px 10px 20px lightgrey', padding:'20px', width:'300px', textAlign:'center'}}>
                 <h3>Login</h3>
                <br></br>
                 <Button onClick={handleLogin}><FontAwesomeIcon icon={faGoogle} />   &nbsp;&nbsp;Login with google</Button>

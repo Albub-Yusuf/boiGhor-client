@@ -23,3 +23,35 @@
     
    
 }
+
+
+#card{
+    width: 300px;
+    height: 400px;
+    box-shadow: 10px 10px 20px lightgrey;
+    border: 2px solid #fab005;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+
+}
+
+#card-photo{
+    width: 99%;
+    height: 250px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+#card-photo img{
+    height: 92%;
+    margin: 5px auto;
+}
+
+#card-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

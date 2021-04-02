@@ -1,0 +1,8 @@
+.tableSecondaryStyle{
+    margin: 10px auto;
+    padding: 10px;
+    box-shadow: 10px 10px 20px #ccc;
+    border-bottom: '2px solid #333';
+    border-radius: 5px;
+    background-color: #fff;
+}

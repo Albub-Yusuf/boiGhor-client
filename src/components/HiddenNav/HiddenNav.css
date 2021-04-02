@@ -1,0 +1,21 @@
+.hidden-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+
+}
+
+.hidden-brand{
+    width: 45%;
+}
+
+.hidden-menus{
+    display: flex;
+    width: 55%;
+    margin-top: 10px;
+    padding-right: 5px;
+    justify-content: space-between;
+
+   
+}

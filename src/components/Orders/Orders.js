@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../App';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Table, Container } from 'react-bootstrap';
+import { Table, Container } from 'react-bootstrap';
 
 import Navbar from '../Navbar/Navbar';
+import './Orders.css';
 
 
 
@@ -31,10 +32,8 @@ const Orders = () => {
             <Container>
             <br></br>
             <h2>Orders</h2>
-            <br></br>
-            <div style={{ width: '90%', margin: '30px', padding: '10px', boxShadow: '10px 10px 20px #ccc', borderBottom: '2px solid #333', borderRadius: '5px' }}>
-
-
+            
+            <div className="tableSecondaryStyle">
 
                 <div>
                     <Table responsive="sm">
@@ -47,8 +46,7 @@ const Orders = () => {
                             </tr>
                         </thead>
                         <tbody>
-
-
+                            
                             {
                                 orders.map(order => <tr key={order._id}>
 

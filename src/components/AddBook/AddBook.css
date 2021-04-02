@@ -14,3 +14,80 @@
       margin: 20px;
       padding: 20px;
   }
+
+
+  .Adminwrapper{
+    display: flex;
+  }
+
+  .content{
+
+    background: #fff;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  .topPanel{
+    width: 100%;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px lightgrey;
+    background-color: #fff;
+
+  }
+
+  .mainPanel{
+    width: 100%;
+    margin: 40px auto;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px lightgrey;
+    padding: 15px;
+    background-color: #fff;
+  }
+
+  .group-field{
+      display: flex;
+      flex-direction: row;
+  }
+
+  .uploadStatus{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bottomPanel{
+    width: 90%;
+    margin: 10px;
+    text-align: right;
+  }
+
+  .hiddenNavAdmin{
+
+    display: none;
+  }
+
+
+  @media (max-width: 596px){
+
+    .side-nav-section{
+      display: none;
+    }
+
+    .hiddenNavAdmin{
+      
+      width: 100%;
+      margin: 10px;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 5px 5px 10px lightgrey;
+      background-color: #ffe066;
+      color:#495057;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+}
+

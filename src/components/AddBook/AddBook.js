@@ -5,6 +5,7 @@ import { Spinner } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SideNav from '../SideNav/SideNav';
 import './AddBook.css';
+import HiddenNav from '../HiddenNav/HiddenNav';
 
 const AddBook = () => {
 
@@ -20,12 +21,7 @@ const AddBook = () => {
 
     const [spinnerdataUpload, setSpinnerdataUpload] = useState(null);
 
-
-
-
-
-
-
+    //Store data to database
     const onSubmit = data => {
 
         if (status === 1) {
@@ -58,6 +54,7 @@ const AddBook = () => {
     }
 
 
+    //image upload
     const handleImageUpload = (event) => {
 
         setSpinner(1);
@@ -82,22 +79,27 @@ const AddBook = () => {
     return (
 
         <div>
-            <div className="Adminwrapper" style={{ display: 'flex' }}>
-                <div className="snav"><SideNav></SideNav></div>
-                <div className="content" style={{ background: '#fff', width: '100%', minHeight: '100%' }}>
+            <div className="Adminwrapper">
 
-                    <div style={{ width: '90%', margin: '10px', borderRadius: '5px', boxShadow: '5px 5px 10px lightgrey', padding: '15px', background: '#fff' }} className="topPanel">
+                {/* SideNav */}
+                <div className="side-nav-section"><SideNav></SideNav></div>
+                <div className="content">
+
+                     {/* Hidden Nav */}
+                     <div className="hiddenNavAdmin">
+                        <HiddenNav></HiddenNav>
+                    </div>
+
+                    {/* Top panel */}
+                    <div className="topPanel">
                         <h3>Add Book</h3>
                     </div>
 
-
-                    {/* code goes here */}
-
+                    {/* form */}
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <div style={{ width: '90%', margin: '40px 10px', borderRadius: '5px', boxShadow: '5px 5px 10px lightgrey', padding: '15px', background: '#fff' }} className="mainPanel">
+                        <div className="mainPanel">
 
-
-                            <div style={{ display: 'flex' }}>
+                            <div className="group-field" >
                                 <div className="input-wrapper">
                                     <label><strong>Book Name</strong></label><br />
                                     <input className="inputStyle" name="name" placeholder="Book Name" ref={register({ required: true })} />
@@ -113,7 +115,7 @@ const AddBook = () => {
 
 
 
-                            <div style={{ display: 'flex' }}>
+                            <div className="group-field" >
                                 <div className="input-wrapper">
                                     <label><strong>Add Price</strong></label><br />
                                     <input className="inputStyle" name="price" type="number" placeholder="price" ref={register({ required: true })} />
@@ -128,9 +130,6 @@ const AddBook = () => {
 
                                     {
                                         visible ? status ? <p><span style={{ color: 'green' }}>image uploaded successfully... Please proceed now</span></p>
-
-
-
 
 
                                             : <p><span style={{ color: 'red' }}>image uploading...</span></p>
@@ -151,7 +150,7 @@ const AddBook = () => {
                             {
                                 spinnerdataUpload &&
 
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                <div className="uploadStatus">
                                     <Spinner style={{ margin: '0px auto', textAlign: 'center' }} animation="grow" role="status" variant="warning">
                                         <span className="sr-only">Loading...</span>
                                     </Spinner>
@@ -162,8 +161,8 @@ const AddBook = () => {
 
                         </div>
 
-                        <div style={{ width: '90%', margin: '10px', borderRadius: '5px', padding: '15px', display: 'flex', justifyContent: 'flex-end' }} className="topPanel">
-                            <input className="btn-add-to-cart" style={{ padding: '15px', width: '80px', borderRadius: '5px' }} type="submit" value="Save" />
+                        <div className="bottomPanel">
+                            <input className="btn-add-to-cart"  style={{ padding: '15px', width: '80px', borderRadius: '5px' }} type="submit" value="Save" />
 
                         </div>
                     </form>
@@ -172,11 +171,6 @@ const AddBook = () => {
                 </div>
             </div>
         </div>
-
-
-
-
-
 
 
     );

@@ -3,6 +3,7 @@ import Book from '../Book/Book';
 import Navbar from '../Navbar/Navbar';
 import { Button, Container, Spinner } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Home.css';
 
 const Home = () => {
 
@@ -10,7 +11,7 @@ const Home = () => {
     const [spinner, setSpinner] = useState(null);
 
     useEffect(() => {
-        
+
         setSpinner(1);
         fetch('https://mighty-fjord-75782.herokuapp.com/books')
             .then(res => res.json())
@@ -19,7 +20,7 @@ const Home = () => {
                 setBooks(data);
                 setSpinner(null);
             }
-            
+
 
 
             );
@@ -32,24 +33,24 @@ const Home = () => {
 
             <Container>
 
-                <div style={{ textAlign: 'center', padding: '20px', margin: '20px auto' }}>
-                    <input className="inputStyle" style={{ width: '300px', height: '50px' }} type="text" placeholder="search" />
-                    <Button style={{ height: '50px', margin: '10px' }} className="btn-add-to-cart">Search</Button>
+                <div className="home-container-wrapper">
+                    <input className="inputStyle" id="search" type="text" placeholder="search" />
+                    <Button id="search-btn" className="btn-add-to-cart">Search</Button>
                 </div>
 
 
-                <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
+                <div id="book-wrapper-container">
                     {
                         books.map(book => <Book key={book._id} book={book}></Book>)
                     }
 
-                {
-                    spinner && 
+                    {
+                        spinner &&
 
-                    <Spinner style={{margin:'200px auto'}} animation="border" role="status" variant="warning">
-                    <span className="sr-only">Loading...</span>
-                  </Spinner>
-                }
+                        <Spinner style={{ margin: '200px auto' }} animation="border" role="status" variant="warning">
+                            <span className="sr-only">Loading...</span>
+                        </Spinner>
+                    }
                 </div>
             </Container>
         </div>
